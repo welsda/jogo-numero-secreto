@@ -4,8 +4,20 @@ function verificaSeOChutePossuiUmValorValido(chute) {
     numero = +chute; // converte valor para número inteiro
 
     if (chuteForInvalido(numero)) {
-        elementoChute.innerHTML += '<div>Valor não é um número</div>';
-
+        if (chuteForInvalido(numero)) {
+            if (chute.toUpperCase() === "GAME OVER") {
+                document.body.innerHTML = `
+                    <h2>Game Over!!!</h2>
+                    <h3>Pressione o botão para jogar novamente</h3>
+                    <button id="jogar-novamente" class="btn-jogar">Jogar novamente</button>
+                `;
+                document.body.style.backgroundColor = "black";
+                document.getElementById('jogar-novamente').style.color = "black";
+            } else {
+                elementoChute.innerHTML += '<div>Valor não é um número</div>';
+            }
+        }
+    
         return // para não executar mais nada da função  
     }
 
